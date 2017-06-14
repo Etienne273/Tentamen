@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\dev\\Tentamen\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Etbel\\.android\\build-cache\\5a0c40ec60a0105428474d5273ec115528c5654c\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\dev\\Tentamen\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Etbel\\.android\\build-cache\\5a0c40ec60a0105428474d5273ec115528c5654c\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\dev\\Tentamen\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Etbel\\.android\\build-cache\\5a0c40ec60a0105428474d5273ec115528c5654c\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\dev\\Tentamen\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Etbel\\.android\\build-cache\\5a0c40ec60a0105428474d5273ec115528c5654c\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    }
+]
