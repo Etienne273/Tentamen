@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // TODO Checken of username en password niet leeg zijn
 
-            
+
             }
         });
     }
