@@ -7,7 +7,7 @@ var routes_v12 = require('./api/routes_v1');
 var routes_v2 = require('./api/routes_v2');
 
 var app = express();
-
+// api v1 en v2
 app.use('/api/v1', routes_v12);
 app.use('/api/v2', routes_v2);
 
