@@ -12,6 +12,7 @@ app.use('/api/v1', routes_v12);
 app.use('/api/v2', routes_v2);
 
 // Server hostnaam en poort
+// fafka
 app.listen(process.env.PORT || 3000, function(){
 	console.log('De server luistert op port 3000');	
 });
