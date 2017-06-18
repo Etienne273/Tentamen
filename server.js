@@ -36,7 +36,7 @@ router.post('/login', function(req, res) {
         res.status(401).json({ "error": "Invalid credentials, bye" })
     }
 
-});
+
 
 // Hiermee maken we onze router zichtbaar voor andere bestanden. 
 module.exports = router;
