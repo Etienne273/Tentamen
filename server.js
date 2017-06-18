@@ -28,7 +28,7 @@ router.post('/login', function(req, res) {
         res.status(401).json({ "error": "Invalid credentials, bye" })
     }
 
-});
+
 
 // Zo wordt de route zichtbaar
 module.exports = router;
