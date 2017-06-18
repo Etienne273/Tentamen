@@ -4,8 +4,6 @@ var router = express.Router();
 var auth = require('../auth/authentication');
 
 
-router.post('/login', function(req, res) {
-
 
 
     // De username en password worden meegestuurd in de request body
