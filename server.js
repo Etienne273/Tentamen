@@ -1,32 +1,64 @@
+//
+// server.js
+//
+var http = require('http');
 var express = require('express');
-var router = express.Router();
+var bodyParser = require('body-parser');
+var logger = require('morgan');
+var auth_routes_v1 = require('./api/authentication.routes.v1');
+var film_routes_v1 = require('./api/film.routes.v1');
+var inventory_routes_v1 = require('./api/inventory.routes.v1');
+var rental_routes_v1 = require('./api/rental.routes.v1');
+var config = require('./config/config');
+var expressJWT = require('express-jwt');
 
-var auth = require('../auth/authentication');
+var app = express();
 
+app.use(bodyParser.urlencoded({'extended': 'true'})); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()); // parse application/json
+app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
 
+app.use(expressJWT({
+    secret: config.secretKey
+}).unless({
+    path: [
+        {url: '/api/v1/login', methods: ['POST']},
+        {url: '/api/v1/register', methods: ['POST']},
+        {url: /\/films\/*/, methods: ['GET']}
+    ]
+}));
 
+app.set('port', (process.env.PORT || config.webPort));
+app.set('env', 'development');
 
-    // De username en password worden meegestuurd in de request body
-    var username = req.body.username;
-    var password = req.body.password;
+app.use(logger('dev'));
 
-    // Dit is een dummy-user die uit de database komt
-    // Momenteel zetten we ze als environment variabelen. 
-    var _dummy_username = process.env.APP_USERNAME || "username";
-    var _dummy_password = process.env.APP_PASSWORD || "test";
+app.use('/api/v1', auth_routes_v1);
+app.use('/api/v1', film_routes_v1);
+app.use('/api/v1', inventory_routes_v1);
+app.use('/api/v1', rental_routes_v1);
 
-    // Kijk of de gegevens matchen. Zo ja, dan token genereren en terugsturen.
-    if (username == _dummy_username && password == _dummy_password) {
-        var token = auth.encodeToken(username);
-        res.status(200).json({
-            "token": token,
-        });
-    } else {
-        // console.log('Input: username = ' + username + ', password = ' + password);
-        res.status(401).json({ "error": "Invalid credentials, bye" })
-    }
+app.use(function (err, req, res, next) {
+    const error = {
+        message: err.message,
+        code: err.code,
+        name: err.name,
+        status: err.status
+    };
+    res.status(401).send(error);
+});
 
+// Fallback
+app.use('*', function (req, res) {
+    res.status(400);
+    res.json({
+        'error': 'Deze URL is niet beschikbaar.'
+    });
+});
 
+// start de server.
+app.listen(app.get('port'), function () {
+    console.log('De server luistert op port ' + app.get('port'));
+});
 
-// Zo wordt de route zichtbaar
-module.exports = router;
+module.exports = app;
