@@ -1,20 +1,29 @@
+
+
 var settings = require('../config/config.json');
 const moment = require('moment');
 const jwt = require('jwt-simple');
+var db = require('../config/db');
 
-function encodeToken(customer_id) {
-    const payload = {
+//
+// Encode (van username naar token)
+//
+function encodeToken(username) {
+    const playload = {
         exp: moment().add(2, 'days').unix(),
         iat: moment().unix(),
-        customer_id: customer_id
+        sub: username
     };
-    return jwt.encode(payload, settings.secretKey);
+    return jwt.encode(playload, settings.secretkey);
 }
 
+//
+// Decode (van token naar username)
+//
 function decodeToken(token, cb) {
 
     try {
-        const payload = jwt.decode(token, settings.secretKey);
+        const payload = jwt.decode(token, settings.secretkey);
 
         // Check if the token has expired. To do: Trigger issue in db ..
         const now = moment().unix();

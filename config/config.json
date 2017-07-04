@@ -1,8 +1,7 @@
 {
-  "webPort": "3000",
-  "dbHost": "146.185.130.82",
-  "dbUser": "1003",
-  "dbDatabase": "1003",
-  "dbPassword": "secret",
-  "secretKey": "*kE5Rh+'lTzU<;:ia[qF6%N,x):%r'b%Po~!Mz$?9lwe5[ZJL),Jn+$,7S{1U7v"
+    "webPort": "3000",
+    "dbHost": "146.185.130.82",
+    "dbUser": "1003",
+    "dbDatabase": "1003",
+    "secretkey": "secret"
 }
